@@ -1,8 +1,9 @@
-const server = Bun.serve({
-  port: 3000,
-  fetch(req) {
-    return new Response(`Bun!`);
-  },
-});
+import figlet from "figlet";
 
-console.log(`Listening on http://localhost:${server.port} ...`);
+const server = Bun.serve({
+  fetch() {
+    const body = figlet.textSync("Bun!");
+    return new Response(body);
+  },
+  port: 3000,
+});
